@@ -1,0 +1,31 @@
+---
+
+#pushes a given policy to a given bigip and creates a policy on the box.
+
+- name: Import and activate ASM policy
+  bigip_asm_policy:
+    active: yes
+    file: "{{ role_path }}/files/waf_policies/{{asm_policy_name}}.xml"
+    name: "{{asm_policy_name}}"
+    state: present
+  delegate_to: localhost
+
+
+- name: Create policy which is immediately published
+  delegate_to: localhost
+  bigip_policy:
+    name: "{{ ltm_policy_name }}"
+    partition: "{{ partition }}"
+    state: present
+
+- name: Add a rule to the new policy - default asm rule
+  delegate_to: localhost
+  bigip_policy_rule:
+    actions:
+      - type: enable
+        asm_policy: "/{{ partition }}/{{ asm_policy_name }}"
+    policy: "{{ ltm_policy_name }}"
+    name: "default_asm_policy_rule"
+   
+
+ 

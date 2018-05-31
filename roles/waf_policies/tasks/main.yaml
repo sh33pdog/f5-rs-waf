@@ -1,0 +1,12 @@
+---
+# This role manages waf policies on a bigip
+
+#Add all dependent objects
+
+- include: push_policy.yaml
+  delegate_to: localhost
+  when: waf_policy_action == "push"
+
+- include: pull_policy.yaml
+  delegate_to: localhost
+  when: waf_policy_action == "pull"
