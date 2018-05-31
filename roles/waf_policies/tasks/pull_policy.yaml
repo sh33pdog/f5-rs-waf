@@ -46,5 +46,6 @@
       user: "{{ vault_bigip_rest_user }}"
       password: "{{ vault_bigip_rest_password }}"
       validate_certs: "{{ validate_certs }}"
+      policy_new_name: "{{ policy_new_name }}"
   delegate_to: localhost
   register: result

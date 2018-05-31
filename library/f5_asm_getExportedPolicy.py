@@ -22,11 +22,13 @@ else:
 
 class BigIpCommon(object):
     def __init__(self, module):
-        self._username = module.params.get('user')
-        self._password = module.params.get('password')
-	self._serviceName = module.params.get('serviceName')
-        self._hostname = module.params.get('server')
-        self._validate_certs = module.params.get('validate_certs')
+		self._username = module.params.get('user')
+		self._password = module.params.get('password')
+		self._serviceName = module.params.get('serviceName')
+		self._hostname = module.params.get('server')
+		self._policy_new_name = module.params.get('policy_new_name'),
+		self._validate_certs = module.params.get('validate_certs')
+		
 
 
 class BigIpRest(BigIpCommon):
@@ -52,7 +54,7 @@ class BigIpRest(BigIpCommon):
 
 
         if resp.status_code == 200:
-	        f = open( "/home/snops/f5-rs-waf/roles/waf_policies/files/waf_policies/" + self._serviceName + ".xml1","w")
+	        f = open( "/home/snops/f5-rs-waf/roles/waf_policies/files/waf_policies/" + str(self._policy_new_name[0]) + ".xml","w")
         	f.write(resp.text)
         	f.close()
 
@@ -71,6 +73,7 @@ def main():
             server=dict(required=True),
             partition=dict(default='Common'),
             name=dict(default=''),
+            policy_new_name=dict(default=''),
             user=dict(required=True, aliases=['username']),
             password=dict(required=True),
 	    serviceName=dict(required=True),
