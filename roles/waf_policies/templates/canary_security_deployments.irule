@@ -1,0 +1,34 @@
+when RULE_INIT {
+    #irule that chooses specifc security profiles for traffic coming from specific locations to enable canary deployments
+    set static::asm_policy_name "{{ asm_policy_name }}"
+    set static::asm_policy_name_canary "{{ asm_policy_name_canary }}"
+    set static::dosl7_profile_name "{{dosl7_profile_name}}"
+    set static::dosl7_profile_name_canary "{{ dosl7_profile_name_canary }}"
+    set static::canary_country "CA"
+    set static::debug 0
+}
+
+
+when CLIENT_ACCEPTED {
+    set client_ip_addr [IP::client_addr]
+}
+
+when HTTP_REQUEST {
+    if {[HTTP::header exists "x-forwarded-for"]} {
+        set client_ip_addr [HTTP::header "x-forwarded-for"]
+        if {$static::debug > 0 } {log "taking client ip from xff header: $client_ip_addr"}
+    }
+    if {$static::debug > 0 } {log "country code: [whereis $client_ip_addr country]"}
+    #choose l7dos profile for canada 
+    if { [whereis $client_ip_addr country] eq $static::canary_country } {
+		#if we have dosl7 canary deployment 
+        if { $static::dosl7_profile_name_canary != "main_dosl7_policy"} {
+        DOSL7::enable "/Common/$static::dosl7_profile_name_canary"
+        }
+        #if we have ASM canary deployment 
+        if { $static::asm_policy_name_canary != "main_asm_policy"} {
+        ASM::enable "/Common/$static::asm_policy_name_canary"
+        }
+    }
+    
+}

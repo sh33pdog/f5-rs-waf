@@ -14,11 +14,12 @@ validate_certs: false
 dosl7_profile_name: "rs_dosl7_profile"
 proactive_bot: "disabled"
 vs_address: "0.0.0.0"
-vs_mask: "0.0.0.0"
+vs_mask: "255.255.255.255"
 vs_port: "443"
 partition: "Common"
 as3_template_name: as3_https_basic_w_waf
-
+fps_profile_name: "rs_fps_profile"
+login_password_encryption: "disabled"
 
 
 #######AS3 serivce definition#########

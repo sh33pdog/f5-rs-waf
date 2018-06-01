@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<policy integrity_check="e5e807296db120dad1d66af131edaeea" bigip_version="13.1.0" name="/Common/secdevops-linux-high">
+<policy integrity_check="8acfe8517c446f2ef2c29f982329ab78" bigip_version="13.1.0" name="/Common/secdevops-linux-high">
   <type>Security</type>
   <policy_version>
-    <timestamp>2018-05-30T19:28:55Z</timestamp>
-    <device_name>ip-10-0-200-73.us-west-2.compute.internal</device_name>
+    <timestamp>2018-05-31T04:44:04Z</timestamp>
+    <device_name>ip-10-0-200-185.us-west-2.compute.internal</device_name>
     <policy_name>/Common/secdevops-linux-high</policy_name>
-    <last_change>File Type no_ext [add]: Filetype Name was set to no_ext.
-Perform Staging was set to enabled. { audit: policy = /Common/secdevops-linux-high, username = admin, client IP = 50.206.82.181 }</last_change>
+    <last_change>HTTP Check High ASCII characters in headers [update]: Disable Learn
+Disable HTTP Check { audit: policy = /Common/secdevops-linux-high, username = admin, client IP = 50.206.82.181 }</last_change>
   </policy_version>
   <encoding>utf-8</encoding>
   <description>Fundamental Policy</description>
@@ -38,7 +38,7 @@ Perform Staging was set to enabled. { audit: policy = /Common/secdevops-linux-hi
     <csrf_url>
       <target_pattern>*</target_pattern>
       <wildcard_order>1</wildcard_order>
-      <last_updated>2018-05-30T17:57:27Z</last_updated>
+      <last_updated>2018-05-31T04:31:06Z</last_updated>
       <csrf_url_method>POST</csrf_url_method>
       <csrf_url_enforcement_action>verify-csrf-token</csrf_url_enforcement_action>
       <required_parameters>ignore</required_parameters>
@@ -579,7 +579,7 @@ Perform Staging was set to enabled. { audit: policy = /Common/secdevops-linux-hi
     <http_protocol_compliance_setting policy_builder_tracking="enabled" name="Content length should be a positive number">disabled</http_protocol_compliance_setting>
     <http_protocol_compliance_setting policy_builder_tracking="disabled" name="Bad HTTP version">enabled</http_protocol_compliance_setting>
     <http_protocol_compliance_setting policy_builder_tracking="disabled" name="Null in request">enabled</http_protocol_compliance_setting>
-    <http_protocol_compliance_setting policy_builder_tracking="enabled" name="High ASCII characters in headers">enabled</http_protocol_compliance_setting>
+    <http_protocol_compliance_setting policy_builder_tracking="disabled" name="High ASCII characters in headers">disabled</http_protocol_compliance_setting>
     <http_protocol_compliance_setting policy_builder_tracking="disabled" name="Unparsable request content">enabled</http_protocol_compliance_setting>
     <http_protocol_compliance_setting policy_builder_tracking="enabled" name="Check maximum number of headers">disabled</http_protocol_compliance_setting>
     <http_protocol_compliance_setting policy_builder_tracking="enabled" name="Bad host header value">disabled</http_protocol_compliance_setting>
@@ -1904,20 +1904,6 @@ Connection: close</response_header>
     </character_set>
   </plain_text_profiles>
   <file_types>
-    <file_type type="explicit" name="no_ext">
-      <learning_mode>Never</learning_mode>
-      <url_length>100</url_length>
-      <request_length>5000</request_length>
-      <query_string_length>1000</query_string_length>
-      <post_data_length>1000</post_data_length>
-      <check_response>false</check_response>
-      <in_staging>true</in_staging>
-      <last_updated>2018-05-30T19:28:55Z</last_updated>
-      <check_url_length>true</check_url_length>
-      <check_request_length>true</check_request_length>
-      <check_query_string_length>true</check_query_string_length>
-      <check_post_data_length>true</check_post_data_length>
-    </file_type>
     <file_type type="wildcard" name="*">
       <wildcard_order>1</wildcard_order>
       <learning_mode>Compact</learning_mode>
@@ -1927,7 +1913,7 @@ Connection: close</response_header>
       <post_data_length>1000</post_data_length>
       <check_response>false</check_response>
       <in_staging>true</in_staging>
-      <last_updated>2018-05-30T17:57:27Z</last_updated>
+      <last_updated>2018-05-31T04:31:06Z</last_updated>
       <check_url_length>true</check_url_length>
       <check_request_length>true</check_request_length>
       <check_query_string_length>true</check_query_string_length>
@@ -1935,64 +1921,6 @@ Connection: close</response_header>
     </file_type>
   </file_types>
   <urls>
-    <url protocol="HTTPS" type="explicit" name="/login">
-      <learning_mode>Never</learning_mode>
-      <check_flows>false</check_flows>
-      <is_entry_point>false</is_entry_point>
-      <is_referrer>false</is_referrer>
-      <can_change_domain_cookie>false</can_change_domain_cookie>
-      <description></description>
-      <user_config_level>basic</user_config_level>
-      <check_metachars>false</check_metachars>
-      <check_methods>false</check_methods>
-      <in_staging>false</in_staging>
-      <last_updated>2018-05-30T19:28:54Z</last_updated>
-      <clickjacking_protection>
-        <enabled>false</enabled>
-        <allow_rendering_in_frames>Never</allow_rendering_in_frames>
-        <allow_rendering_from></allow_rendering_from>
-      </clickjacking_protection>
-      <cors_enforcement_enable>false</cors_enforcement_enable>
-      <allow_cors>false</allow_cors>
-      <cors_allow_credentials_handling>unmodified</cors_allow_credentials_handling>
-      <cors_allow_credentials>allow</cors_allow_credentials>
-      <cors_check_maximum_age>false</cors_check_maximum_age>
-      <cors_maximum_age>1800</cors_maximum_age>
-      <cors_allowed_origins_handling>unmodified</cors_allowed_origins_handling>
-      <cors_allowed_methods_handling>unmodified</cors_allowed_methods_handling>
-      <cors_allowed_headers_handling>unmodified</cors_allowed_headers_handling>
-      <cors_exposed_headers_handling>unmodified</cors_exposed_headers_handling>
-      <flg_wildcard_includes_slash>false</flg_wildcard_includes_slash>
-      <check_attack_signatures>true</check_attack_signatures>
-      <in_classification>false</in_classification>
-      <content_profile>
-        <header_name>*</header_name>
-        <header_value>*</header_value>
-        <header_order>0</header_order>
-        <enforcement_type>apply_value_signatures</enforcement_type>
-      </content_profile>
-      <content_profile>
-        <header_name>Content-Type</header_name>
-        <header_value>*form*</header_value>
-        <header_order>1</header_order>
-        <enforcement_type>http</enforcement_type>
-      </content_profile>
-      <content_profile>
-        <profile_name>Default</profile_name>
-        <header_name>Content-Type</header_name>
-        <header_value>*json*</header_value>
-        <header_order>2</header_order>
-        <enforcement_type>json</enforcement_type>
-      </content_profile>
-      <content_profile>
-        <profile_name>Default</profile_name>
-        <header_name>Content-Type</header_name>
-        <header_value>*xml*</header_value>
-        <header_order>3</header_order>
-        <enforcement_type>xml</enforcement_type>
-      </content_profile>
-      <attack_signature sig_id="200010008">disabled</attack_signature>
-    </url>
     <url protocol="HTTPS" type="wildcard" name="*">
       <wildcard_order>1</wildcard_order>
       <learning_mode>Never</learning_mode>
@@ -2005,7 +1933,7 @@ Connection: close</response_header>
       <check_metachars>false</check_metachars>
       <check_methods>false</check_methods>
       <in_staging>true</in_staging>
-      <last_updated>2018-05-30T17:57:41Z</last_updated>
+      <last_updated>2018-05-31T04:31:21Z</last_updated>
       <clickjacking_protection>
         <enabled>false</enabled>
         <allow_rendering_in_frames>Never</allow_rendering_in_frames>
@@ -2063,7 +1991,7 @@ Connection: close</response_header>
       <check_metachars>false</check_metachars>
       <check_methods>false</check_methods>
       <in_staging>true</in_staging>
-      <last_updated>2018-05-30T17:57:41Z</last_updated>
+      <last_updated>2018-05-31T04:31:21Z</last_updated>
       <clickjacking_protection>
         <enabled>false</enabled>
         <allow_rendering_in_frames>Never</allow_rendering_in_frames>
@@ -2376,7 +2304,7 @@ Connection: close</response_header>
       <user_config_level>advanced</user_config_level>
       <check_metachars>false</check_metachars>
       <in_staging>true</in_staging>
-      <last_updated>2018-05-30T17:57:32Z</last_updated>
+      <last_updated>2018-05-31T04:31:12Z</last_updated>
       <cors_enforcement_enable>false</cors_enforcement_enable>
       <allow_cors>false</allow_cors>
       <cors_allowed_origins_handling>unmodified</cors_allowed_origins_handling>
@@ -2403,7 +2331,7 @@ Connection: close</response_header>
       <user_config_level>advanced</user_config_level>
       <check_metachars>false</check_metachars>
       <in_staging>true</in_staging>
-      <last_updated>2018-05-30T17:57:32Z</last_updated>
+      <last_updated>2018-05-31T04:31:12Z</last_updated>
       <cors_enforcement_enable>false</cors_enforcement_enable>
       <allow_cors>false</allow_cors>
       <cors_allowed_origins_handling>unmodified</cors_allowed_origins_handling>
@@ -2438,7 +2366,7 @@ Connection: close</response_header>
       <match_regular_expression></match_regular_expression>
       <is_sensitive>false</is_sensitive>
       <in_staging>true</in_staging>
-      <last_updated>2018-05-30T17:57:27Z</last_updated>
+      <last_updated>2018-05-31T04:31:06Z</last_updated>
       <parameter_name_metachars>
         <check_metachars>false</check_metachars>
       </parameter_name_metachars>
@@ -20483,7 +20411,7 @@ Connection: close</response_header>
     <identify_device>false</identify_device>
     <maximum_prevention_time>3600</maximum_prevention_time>
     <flg_enabled>false</flg_enabled>
-    <last_updated>1527703046</last_updated>
+    <last_updated>1527741066</last_updated>
     <detection_threshold_credentials_stuffing_matches_reached>100</detection_threshold_credentials_stuffing_matches_reached>
     <detection_threshold_action>alarm-and-captcha</detection_threshold_action>
     <login_attempts_from_the_same_user_threshold>3</login_attempts_from_the_same_user_threshold>

@@ -28,4 +28,73 @@
     name: "default_asm_policy_rule"
    
 
+   
+   
+#######################DOSL7 config#####################################
+    
+- name: Getting bigip authentication token
+  delegate_to: localhost
+  uri:
+    body: '{"username":"{{vault_bigip_rest_user}}","password":"{{vault_bigip_rest_password}}","loginProvidername":"tmos"}'
+    body_format: json
+    method: POST
+    url: "https://{{ bigip_ip_addr }}:{{ bigip_mgmt_port }}/mgmt/shared/authn/login"
+    status_code: 200
+    validate_certs: no
+  register: bigip_auth_response
+  
+- name: assinging auth token to a variable 
+  set_fact:
+    bigip_auth_token: "{{ bigip_auth_response.json.token.token }}"
+    
+- name: updating DOSL7 profile
+  delegate_to: localhost
+  uri:
+    body: "{{ lookup('template', 'dosl7_profile_payload.j2') }}"
+    body_format: json
+    headers:
+      X-F5-Auth-Token: "{{ bigip_auth_token }}"
+    method: PATCH
+    status_code: 200
+    url: "https://{{ bigip_ip_addr }}:{{ bigip_mgmt_port }}/mgmt/tm/security/dos/profile/{{dosl7_profile_name}}"
+    validate_certs: no
+
+- name: creating canary DOSL7 profile (when deploying canary)
+  delegate_to: localhost
+  uri:
+    body: "{{ lookup('template', 'dosl7_profile_payload_canary.j2') }}"
+    body_format: json
+    headers:
+      X-F5-Auth-Token: "{{ bigip_auth_token }}"
+    method: POST
+    status_code: 200, 201, 409
+    url: "https://{{ bigip_ip_addr }}:{{ bigip_mgmt_port }}/mgmt/tm/security/dos/profile"
+    validate_certs: no
+  when: dosl7_profile_name_canary != "main_dosl7_policy"
+
+- name: making sure it exists creating canary DOSL7 profile (when deploying canary)
+  delegate_to: localhost
+  uri:
+    body: "{{ lookup('template', 'dosl7_profile_payload_canary.j2') }}"
+    body_format: json
+    headers:
+      X-F5-Auth-Token: "{{ bigip_auth_token }}"
+    method: POST
+    status_code: 200, 201, 409
+    url: "https://{{ bigip_ip_addr }}:{{ bigip_mgmt_port }}/mgmt/tm/security/dos/profile"
+    validate_certs: no
+  when: dosl7_profile_name_canary != "main_dosl7_policy"
  
+#######################FPS config##################################### 
+
+- name: updating FPS profile
+  delegate_to: localhost
+  uri:
+    body: "{{ lookup('template', 'fps_profile_payload.j2') }}"
+    body_format: json
+    headers:
+      X-F5-Auth-Token: "{{ bigip_auth_token }}"
+    method: PATCH
+    status_code: 200
+    url: "https://{{ bigip_ip_addr }}:{{ bigip_mgmt_port }}//mgmt/tm/security/anti-fraud/profile/{{fps_profile_name}}"
+    validate_certs: no
