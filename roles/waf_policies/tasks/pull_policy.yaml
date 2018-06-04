@@ -9,14 +9,14 @@
       server: "{{ bigip_ip_addr }}"
       user: "{{ vault_bigip_rest_user }}"
       password: "{{ vault_bigip_rest_password }}"
-      policyName: "{{ asm_policy_name }}"
+      policyName: "{{ waf_policy_name }}"
       validate_certs: "{{ validate_certs }}"
   register: policyId
 
 - name: EXPORT POLICY
   f5_asm_exportPolicy:
       server: "{{ bigip_ip_addr }}"
-      serviceName: "{{ asm_policy_name }}"
+      serviceName: "{{ waf_policy_name }}"
       policyId: "{{policyId.policyId}}"
       user: "{{ vault_bigip_rest_user }}"
       password: "{{ vault_bigip_rest_password }}"
@@ -42,7 +42,7 @@
 - name: GET EXPORTED POLICY
   f5_asm_getExportedPolicy:
       server: "{{ bigip_ip_addr }}"
-      serviceName: "{{ asm_policy_name }}"
+      serviceName: "{{ waf_policy_name }}"
       user: "{{ vault_bigip_rest_user }}"
       password: "{{ vault_bigip_rest_password }}"
       validate_certs: "{{ validate_certs }}"

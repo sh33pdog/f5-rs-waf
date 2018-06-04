@@ -5,8 +5,8 @@
 - name: Import and activate ASM policy
   bigip_asm_policy:
     active: yes
-    file: "{{ role_path }}/files/waf_policies/{{asm_policy_name}}.xml"
-    name: "{{asm_policy_name}}"
+    file: "{{ role_path }}/files/waf_policies/{{waf_policy_name}}.xml"
+    name: "{{waf_policy_name}}"
     state: present
   delegate_to: localhost
 
@@ -23,14 +23,14 @@
   bigip_policy_rule:
     actions:
       - type: enable
-        asm_policy: "/{{ partition }}/{{ asm_policy_name }}"
+        asm_policy: "/{{ partition }}/{{ waf_policy_name }}"
     policy: "{{ ltm_policy_name }}"
     name: "default_asm_policy_rule"
    
 
    
    
-#######################DOSL7 config#####################################
+#######################Getting bigip auth token #####################################
     
 - name: Getting bigip authentication token
   delegate_to: localhost
@@ -46,6 +46,9 @@
 - name: assinging auth token to a variable 
   set_fact:
     bigip_auth_token: "{{ bigip_auth_response.json.token.token }}"
+
+
+#######################DOSL7 config#####################################
     
 - name: updating DOSL7 profile
   delegate_to: localhost

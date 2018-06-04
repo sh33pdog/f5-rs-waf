@@ -12,7 +12,7 @@ partition: "Common"
 strict_updates: false
 validate_certs: false
 dosl7_profile_name: "rs_dosl7_profile"
-proactive_bot: "disabled"
+proactive_autometed_attack_prevention: "disabled"
 vs_address: "0.0.0.0"
 vs_mask: "255.255.255.255"
 vs_port: "443"
@@ -20,6 +20,8 @@ partition: "Common"
 as3_template_name: as3_https_basic_w_waf
 fps_profile_name: "rs_fps_profile"
 login_password_encryption: "disabled"
+login_page_file: "login"
+login_page_path: "user"
 
 
 #######AS3 serivce definition#########
@@ -29,7 +31,7 @@ as3_http_pool_name: "as3_pool1"
 as3_service_label: "app1"
 
 ###Canary deployment
-asm_policy_name_canary: "main_asm_policy"
+waf_policy_name_canary: "main_asm_policy"
 dosl7_profile_name_canary: "main_dosl7_policy"
 canary_security_deployments_irule: "/Common/canary_security_deployments"
 
@@ -40,8 +42,8 @@ canary_security_deployments_irule: "/Common/canary_security_deployments"
 client_ssl_cert_name: "default"
 
 ltm_policy_name: "{{ service_name }}_ltm_policy" 
-asm_policy_name: "linux-high"
-asm_policy_base64: "{{ lookup('file', 'asm-policy-' + asm_policy_name + '.xml') | b64encode }}"
+waf_policy_name: "linux-high"
+asm_policy_base64: "{{ lookup('file', 'asm-policy-' + waf_policy_name + '.xml') | b64encode }}"
 
 logging_profile_name: "asm_log_to_splunk"
 analytics_profile_name: "my_analytics_profile"
