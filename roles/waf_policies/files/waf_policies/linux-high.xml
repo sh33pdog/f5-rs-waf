@@ -1,19 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<policy integrity_check="26bb279e40f65204230c1bb9ce393c60" bigip_version="13.1.0" name="/Common/linux-high">
+<policy integrity_check="90165a4a9b0b30ab03fbad54241ed488" bigip_version="13.1.0" name="/Common/linux-high">
   <type>Security</type>
   <policy_version>
-    <timestamp>2018-06-12T01:02:59Z</timestamp>
+    <timestamp>2018-06-12T01:10:38Z</timestamp>
     <device_name>ip-10-0-200-140.us-west-1.compute.internal</device_name>
     <policy_name>/Common/linux-high</policy_name>
-    <last_change>Whitelist IP Address 12.12.12.12 [add]: Trusted by Policy Builder was set to true.
-Never learn requests was set to false.
-IP Address was set to 12.12.12.12.
-IP Mask was set to 255.255.255.255.
-Never log requests was set to false.
-Block requests was set to Policy Default.
-Description was set to empty value.
-Ignore IP Reputation Enforcement was set to false.
-Ignore anomalies was set to false. { audit: policy = /Common/linux-high, username = admin, client IP = 69.90.110.54 }</last_change>
+    <last_change>Parameter * [update]: Learn New Entities was set to Never (wildcard only). { audit: policy = /Common/linux-high, username = admin, client IP = 69.90.110.54, 67.170.73.118 }</last_change>
   </policy_version>
   <encoding>utf-8</encoding>
   <description>Fundamental Policy</description>
@@ -45,7 +37,7 @@ Ignore anomalies was set to false. { audit: policy = /Common/linux-high, usernam
     <csrf_url>
       <target_pattern>*</target_pattern>
       <wildcard_order>1</wildcard_order>
-      <last_updated>2018-06-12T01:01:05Z</last_updated>
+      <last_updated>2018-06-12T01:07:01Z</last_updated>
       <csrf_url_method>POST</csrf_url_method>
       <csrf_url_enforcement_action>verify-csrf-token</csrf_url_enforcement_action>
       <required_parameters>ignore</required_parameters>
@@ -1913,14 +1905,14 @@ Connection: close</response_header>
   <file_types>
     <file_type type="wildcard" name="*">
       <wildcard_order>1</wildcard_order>
-      <learning_mode>Compact</learning_mode>
+      <learning_mode>Never</learning_mode>
       <url_length>100</url_length>
       <request_length>5000</request_length>
       <query_string_length>1000</query_string_length>
       <post_data_length>1000</post_data_length>
       <check_response>false</check_response>
       <in_staging>true</in_staging>
-      <last_updated>2018-06-12T01:01:05Z</last_updated>
+      <last_updated>2018-06-12T01:10:38Z</last_updated>
       <check_url_length>true</check_url_length>
       <check_request_length>true</check_request_length>
       <check_query_string_length>true</check_query_string_length>
@@ -1940,7 +1932,7 @@ Connection: close</response_header>
       <check_metachars>false</check_metachars>
       <check_methods>false</check_methods>
       <in_staging>false</in_staging>
-      <last_updated>2018-06-12T01:01:15Z</last_updated>
+      <last_updated>2018-06-12T01:07:12Z</last_updated>
       <clickjacking_protection>
         <enabled>false</enabled>
         <allow_rendering_in_frames>Never</allow_rendering_in_frames>
@@ -1998,7 +1990,7 @@ Connection: close</response_header>
       <check_metachars>false</check_metachars>
       <check_methods>false</check_methods>
       <in_staging>false</in_staging>
-      <last_updated>2018-06-12T01:01:15Z</last_updated>
+      <last_updated>2018-06-12T01:07:12Z</last_updated>
       <clickjacking_protection>
         <enabled>false</enabled>
         <allow_rendering_in_frames>Never</allow_rendering_in_frames>
@@ -2311,7 +2303,7 @@ Connection: close</response_header>
       <user_config_level>advanced</user_config_level>
       <check_metachars>false</check_metachars>
       <in_staging>true</in_staging>
-      <last_updated>2018-06-12T01:01:11Z</last_updated>
+      <last_updated>2018-06-12T01:07:07Z</last_updated>
       <cors_enforcement_enable>false</cors_enforcement_enable>
       <allow_cors>false</allow_cors>
       <cors_allowed_origins_handling>unmodified</cors_allowed_origins_handling>
@@ -2338,7 +2330,7 @@ Connection: close</response_header>
       <user_config_level>advanced</user_config_level>
       <check_metachars>false</check_metachars>
       <in_staging>true</in_staging>
-      <last_updated>2018-06-12T01:01:11Z</last_updated>
+      <last_updated>2018-06-12T01:07:07Z</last_updated>
       <cors_enforcement_enable>false</cors_enforcement_enable>
       <allow_cors>false</allow_cors>
       <cors_allowed_origins_handling>unmodified</cors_allowed_origins_handling>
@@ -2362,7 +2354,7 @@ Connection: close</response_header>
   <parameters>
     <parameter type="wildcard" name="*">
       <wildcard_order>1</wildcard_order>
-      <learning_mode>When Violation Detected</learning_mode>
+      <learning_mode>Never</learning_mode>
       <is_mandatory>false</is_mandatory>
       <allow_empty_value>true</allow_empty_value>
       <value_type>user input</value_type>
@@ -2373,7 +2365,7 @@ Connection: close</response_header>
       <match_regular_expression></match_regular_expression>
       <is_sensitive>false</is_sensitive>
       <in_staging>false</in_staging>
-      <last_updated>2018-06-12T01:01:05Z</last_updated>
+      <last_updated>2018-06-12T01:10:38Z</last_updated>
       <parameter_name_metachars>
         <check_metachars>false</check_metachars>
       </parameter_name_metachars>
@@ -2938,7 +2930,7 @@ Connection: close</response_header>
   <headers>
     <allowed_modified_cookie type="wildcard" name="*">
       <wildcard_order>1</wildcard_order>
-      <learning_mode>When Violation Detected</learning_mode>
+      <learning_mode>Never</learning_mode>
       <in_staging>true</in_staging>
       <enforcement_mode>allow</enforcement_mode>
       <http_only>false</http_only>
@@ -20223,18 +20215,18 @@ Connection: close</response_header>
     <response_code>3xx</response_code>
   </policy_builder>
   <policy_builder_cookie>
-    <learn_cookies>When Violation Detected</learn_cookies>
+    <learn_cookies>Never</learn_cookies>
     <maximum_allowed_modified_cookies>100</maximum_allowed_modified_cookies>
     <collapse_cookies>false</collapse_cookies>
     <collapse_cookies_occurrences>10</collapse_cookies_occurrences>
     <flg_enforce_unmodified_cookies>false</flg_enforce_unmodified_cookies>
   </policy_builder_cookie>
   <policy_builder_filetype>
-    <learn_file_types>Compact</learn_file_types>
+    <learn_file_types>Never</learn_file_types>
     <maximum_file_types>50</maximum_file_types>
   </policy_builder_filetype>
   <policy_builder_parameter>
-    <learn_parameters>When Violation Detected</learn_parameters>
+    <learn_parameters>Never</learn_parameters>
     <parameters_integer_value>false</parameters_integer_value>
     <maximum_parameters>10000</maximum_parameters>
     <dynamic_parameters>
@@ -20429,7 +20421,7 @@ Connection: close</response_header>
     <identify_device>false</identify_device>
     <maximum_prevention_time>3600</maximum_prevention_time>
     <flg_enabled>false</flg_enabled>
-    <last_updated>1528765265</last_updated>
+    <last_updated>1528765621</last_updated>
     <detection_threshold_credentials_stuffing_matches_reached>100</detection_threshold_credentials_stuffing_matches_reached>
     <detection_threshold_action>alarm-and-captcha</detection_threshold_action>
     <login_attempts_from_the_same_user_threshold>3</login_attempts_from_the_same_user_threshold>
