@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<policy integrity_check="3964babf11c31658896b05de74e2bfe7" bigip_version="13.1.0" name="/Common/linux-high">
+<policy integrity_check="3f60198cd01483cf09e1274f21766367" bigip_version="13.1.0" name="/Common/linux-high">
   <type>Security</type>
   <policy_version>
-    <timestamp>2018-06-06T19:55:42Z</timestamp>
-    <device_name>ip-10-0-200-183.us-west-1.compute.internal</device_name>
+    <timestamp>2018-06-12T00:57:21Z</timestamp>
+    <device_name>ip-10-0-200-140.us-west-1.compute.internal</device_name>
     <policy_name>/Common/linux-high</policy_name>
-    <last_change>Parameter * [update]: Perform Staging was set to disabled. { audit: policy = /Common/linux-high, username = admin, client IP = 67.170.73.118 }</last_change>
+    <last_change>Allowed Response Code 503 [add]: Response Code was set to 503. { audit: policy = /Common/linux-high, username = admin, client IP = 69.90.110.54 }</last_change>
   </policy_version>
   <encoding>utf-8</encoding>
   <description>Fundamental Policy</description>
@@ -15,7 +15,7 @@
   <general>
     <path_parameter_handling>as parameters</path_parameter_handling>
     <mask_sensitive>true</mask_sensitive>
-    <trigger_asm_irule_event>Disabled</trigger_asm_irule_event>
+    <trigger_asm_irule_event>Enabled: Normal Mode</trigger_asm_irule_event>
     <staging_period_in_days>7</staging_period_in_days>
     <enable_correlation>true</enable_correlation>
   </general>
@@ -28,7 +28,7 @@
   <header_settings>
     <maximum_http_length>0</maximum_http_length>
   </header_settings>
-  <trust_xff>false</trust_xff>
+  <trust_xff>true</trust_xff>
   <csrf>
     <enabled>false</enabled>
     <ssl_only>false</ssl_only>
@@ -37,7 +37,7 @@
     <csrf_url>
       <target_pattern>*</target_pattern>
       <wildcard_order>1</wildcard_order>
-      <last_updated>2018-06-06T19:54:02Z</last_updated>
+      <last_updated>2018-06-12T00:55:40Z</last_updated>
       <csrf_url_method>POST</csrf_url_method>
       <csrf_url_enforcement_action>verify-csrf-token</csrf_url_enforcement_action>
       <required_parameters>ignore</required_parameters>
@@ -1912,7 +1912,7 @@ Connection: close</response_header>
       <post_data_length>1000</post_data_length>
       <check_response>false</check_response>
       <in_staging>true</in_staging>
-      <last_updated>2018-06-06T19:54:02Z</last_updated>
+      <last_updated>2018-06-12T00:55:40Z</last_updated>
       <check_url_length>true</check_url_length>
       <check_request_length>true</check_request_length>
       <check_query_string_length>true</check_query_string_length>
@@ -1932,7 +1932,7 @@ Connection: close</response_header>
       <check_metachars>false</check_metachars>
       <check_methods>false</check_methods>
       <in_staging>false</in_staging>
-      <last_updated>2018-06-06T19:55:29Z</last_updated>
+      <last_updated>2018-06-12T00:55:51Z</last_updated>
       <clickjacking_protection>
         <enabled>false</enabled>
         <allow_rendering_in_frames>Never</allow_rendering_in_frames>
@@ -1990,7 +1990,7 @@ Connection: close</response_header>
       <check_metachars>false</check_metachars>
       <check_methods>false</check_methods>
       <in_staging>false</in_staging>
-      <last_updated>2018-06-06T19:55:29Z</last_updated>
+      <last_updated>2018-06-12T00:55:51Z</last_updated>
       <clickjacking_protection>
         <enabled>false</enabled>
         <allow_rendering_in_frames>Never</allow_rendering_in_frames>
@@ -2303,7 +2303,7 @@ Connection: close</response_header>
       <user_config_level>advanced</user_config_level>
       <check_metachars>false</check_metachars>
       <in_staging>true</in_staging>
-      <last_updated>2018-06-06T19:54:08Z</last_updated>
+      <last_updated>2018-06-12T00:55:46Z</last_updated>
       <cors_enforcement_enable>false</cors_enforcement_enable>
       <allow_cors>false</allow_cors>
       <cors_allowed_origins_handling>unmodified</cors_allowed_origins_handling>
@@ -2330,7 +2330,7 @@ Connection: close</response_header>
       <user_config_level>advanced</user_config_level>
       <check_metachars>false</check_metachars>
       <in_staging>true</in_staging>
-      <last_updated>2018-06-06T19:54:08Z</last_updated>
+      <last_updated>2018-06-12T00:55:46Z</last_updated>
       <cors_enforcement_enable>false</cors_enforcement_enable>
       <allow_cors>false</allow_cors>
       <cors_allowed_origins_handling>unmodified</cors_allowed_origins_handling>
@@ -2365,7 +2365,7 @@ Connection: close</response_header>
       <match_regular_expression></match_regular_expression>
       <is_sensitive>false</is_sensitive>
       <in_staging>false</in_staging>
-      <last_updated>2018-06-06T19:55:42Z</last_updated>
+      <last_updated>2018-06-12T00:55:41Z</last_updated>
       <parameter_name_metachars>
         <check_metachars>false</check_metachars>
       </parameter_name_metachars>
@@ -20410,7 +20410,7 @@ Connection: close</response_header>
     <identify_device>false</identify_device>
     <maximum_prevention_time>3600</maximum_prevention_time>
     <flg_enabled>false</flg_enabled>
-    <last_updated>1528314842</last_updated>
+    <last_updated>1528764940</last_updated>
     <detection_threshold_credentials_stuffing_matches_reached>100</detection_threshold_credentials_stuffing_matches_reached>
     <detection_threshold_action>alarm-and-captcha</detection_threshold_action>
     <login_attempts_from_the_same_user_threshold>3</login_attempts_from_the_same_user_threshold>
