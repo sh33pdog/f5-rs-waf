@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<policy integrity_check="2b752490b9cfecf5b0e5cd7a2c74ce6d" bigip_version="13.1.0" name="/Common/linux-high">
+<policy integrity_check="0e7db035f0b5d4e1ea7e8296223a9983" bigip_version="13.1.0" name="/Common/linux-high">
   <type>Security</type>
   <policy_version>
-    <timestamp>2018-06-06T18:23:44Z</timestamp>
-    <device_name>ip-10-0-200-183.us-west-1.compute.internal</device_name>
+    <timestamp>2018-06-11T23:27:28Z</timestamp>
+    <device_name>App2-dev-us-west-1-bigip.com</device_name>
     <policy_name>/Common/linux-high</policy_name>
     <last_change>HTTP Check High ASCII characters in headers [update]: Disable Learn
 Disable HTTP Check { audit: policy = /Common/linux-high, username = admin, client IP = 67.170.73.118 }</last_change>
@@ -38,7 +38,7 @@ Disable HTTP Check { audit: policy = /Common/linux-high, username = admin, clien
     <csrf_url>
       <target_pattern>*</target_pattern>
       <wildcard_order>1</wildcard_order>
-      <last_updated>2018-06-06T17:48:23Z</last_updated>
+      <last_updated>2018-06-11T23:20:21Z</last_updated>
       <csrf_url_method>POST</csrf_url_method>
       <csrf_url_enforcement_action>verify-csrf-token</csrf_url_enforcement_action>
       <required_parameters>ignore</required_parameters>
@@ -1913,7 +1913,7 @@ Connection: close</response_header>
       <post_data_length>1000</post_data_length>
       <check_response>false</check_response>
       <in_staging>true</in_staging>
-      <last_updated>2018-06-06T17:48:23Z</last_updated>
+      <last_updated>2018-06-11T23:20:21Z</last_updated>
       <check_url_length>true</check_url_length>
       <check_request_length>true</check_request_length>
       <check_query_string_length>true</check_query_string_length>
@@ -1932,8 +1932,8 @@ Connection: close</response_header>
       <user_config_level>advanced</user_config_level>
       <check_metachars>false</check_metachars>
       <check_methods>false</check_methods>
-      <in_staging>true</in_staging>
-      <last_updated>2018-06-06T17:48:38Z</last_updated>
+      <in_staging>false</in_staging>
+      <last_updated>2018-06-11T23:20:35Z</last_updated>
       <clickjacking_protection>
         <enabled>false</enabled>
         <allow_rendering_in_frames>Never</allow_rendering_in_frames>
@@ -1990,8 +1990,8 @@ Connection: close</response_header>
       <user_config_level>advanced</user_config_level>
       <check_metachars>false</check_metachars>
       <check_methods>false</check_methods>
-      <in_staging>true</in_staging>
-      <last_updated>2018-06-06T17:48:38Z</last_updated>
+      <in_staging>false</in_staging>
+      <last_updated>2018-06-11T23:20:35Z</last_updated>
       <clickjacking_protection>
         <enabled>false</enabled>
         <allow_rendering_in_frames>Never</allow_rendering_in_frames>
@@ -2304,7 +2304,7 @@ Connection: close</response_header>
       <user_config_level>advanced</user_config_level>
       <check_metachars>false</check_metachars>
       <in_staging>true</in_staging>
-      <last_updated>2018-06-06T17:48:29Z</last_updated>
+      <last_updated>2018-06-11T23:20:27Z</last_updated>
       <cors_enforcement_enable>false</cors_enforcement_enable>
       <allow_cors>false</allow_cors>
       <cors_allowed_origins_handling>unmodified</cors_allowed_origins_handling>
@@ -2331,7 +2331,7 @@ Connection: close</response_header>
       <user_config_level>advanced</user_config_level>
       <check_metachars>false</check_metachars>
       <in_staging>true</in_staging>
-      <last_updated>2018-06-06T17:48:29Z</last_updated>
+      <last_updated>2018-06-11T23:20:27Z</last_updated>
       <cors_enforcement_enable>false</cors_enforcement_enable>
       <allow_cors>false</allow_cors>
       <cors_allowed_origins_handling>unmodified</cors_allowed_origins_handling>
@@ -2365,8 +2365,8 @@ Connection: close</response_header>
       <maximum_length>10</maximum_length>
       <match_regular_expression></match_regular_expression>
       <is_sensitive>false</is_sensitive>
-      <in_staging>true</in_staging>
-      <last_updated>2018-06-06T17:48:23Z</last_updated>
+      <in_staging>false</in_staging>
+      <last_updated>2018-06-11T23:20:21Z</last_updated>
       <parameter_name_metachars>
         <check_metachars>false</check_metachars>
       </parameter_name_metachars>
@@ -20411,7 +20411,7 @@ Connection: close</response_header>
     <identify_device>false</identify_device>
     <maximum_prevention_time>3600</maximum_prevention_time>
     <flg_enabled>false</flg_enabled>
-    <last_updated>1528307303</last_updated>
+    <last_updated>1528759221</last_updated>
     <detection_threshold_credentials_stuffing_matches_reached>100</detection_threshold_credentials_stuffing_matches_reached>
     <detection_threshold_action>alarm-and-captcha</detection_threshold_action>
     <login_attempts_from_the_same_user_threshold>3</login_attempts_from_the_same_user_threshold>

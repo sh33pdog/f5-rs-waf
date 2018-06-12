@@ -22,6 +22,7 @@ fps_profile_name: "rs_fps_profile"
 login_password_encryption: "disabled"
 login_page_file: "login"
 login_page_path: "user"
+dosl7_whitelist_ip: "12.12.12.12/32"
 
 
 #######AS3 serivce definition#########

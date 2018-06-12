@@ -1,5 +1,6 @@
 ---
 
+
 #pushes a given policy to a given bigip and creates a policy on the box.
 
 - name: Import and activate ASM policy
@@ -50,6 +51,19 @@
 
 #######################DOSL7 config#####################################
     
+
+- name: create/update an whitelist address list 
+  delegate_to: localhost
+  uri:
+    body: "{{ lookup('template', 'dosl7_whitelist_address_list.j2') }}"
+    body_format: json
+    headers:
+      X-F5-Auth-Token: "{{ bigip_auth_token }}"
+    method: POST
+    status_code: 200, 201, 409
+    url: "https://{{ bigip_ip_addr }}:{{ bigip_mgmt_port }}/mgmt/tm/security/shared-objects/address-list"
+    validate_certs: no
+
 - name: updating DOSL7 profile
   delegate_to: localhost
   uri:
@@ -61,7 +75,7 @@
     status_code: 200
     url: "https://{{ bigip_ip_addr }}:{{ bigip_mgmt_port }}/mgmt/tm/security/dos/profile/{{dosl7_profile_name}}"
     validate_certs: no
-
+    
 - name: creating canary DOSL7 profile (when deploying canary)
   delegate_to: localhost
   uri:
