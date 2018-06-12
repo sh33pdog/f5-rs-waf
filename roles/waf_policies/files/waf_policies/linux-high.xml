@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<policy integrity_check="3f60198cd01483cf09e1274f21766367" bigip_version="13.1.0" name="/Common/linux-high">
+<policy integrity_check="26bb279e40f65204230c1bb9ce393c60" bigip_version="13.1.0" name="/Common/linux-high">
   <type>Security</type>
   <policy_version>
-    <timestamp>2018-06-12T00:57:21Z</timestamp>
+    <timestamp>2018-06-12T01:02:59Z</timestamp>
     <device_name>ip-10-0-200-140.us-west-1.compute.internal</device_name>
     <policy_name>/Common/linux-high</policy_name>
-    <last_change>Allowed Response Code 503 [add]: Response Code was set to 503. { audit: policy = /Common/linux-high, username = admin, client IP = 69.90.110.54 }</last_change>
+    <last_change>Whitelist IP Address 12.12.12.12 [add]: Trusted by Policy Builder was set to true.
+Never learn requests was set to false.
+IP Address was set to 12.12.12.12.
+IP Mask was set to 255.255.255.255.
+Never log requests was set to false.
+Block requests was set to Policy Default.
+Description was set to empty value.
+Ignore IP Reputation Enforcement was set to false.
+Ignore anomalies was set to false. { audit: policy = /Common/linux-high, username = admin, client IP = 69.90.110.54 }</last_change>
   </policy_version>
   <encoding>utf-8</encoding>
   <description>Fundamental Policy</description>
@@ -37,7 +45,7 @@
     <csrf_url>
       <target_pattern>*</target_pattern>
       <wildcard_order>1</wildcard_order>
-      <last_updated>2018-06-12T00:55:40Z</last_updated>
+      <last_updated>2018-06-12T01:01:05Z</last_updated>
       <csrf_url_method>POST</csrf_url_method>
       <csrf_url_enforcement_action>verify-csrf-token</csrf_url_enforcement_action>
       <required_parameters>ignore</required_parameters>
@@ -1912,7 +1920,7 @@ Connection: close</response_header>
       <post_data_length>1000</post_data_length>
       <check_response>false</check_response>
       <in_staging>true</in_staging>
-      <last_updated>2018-06-12T00:55:40Z</last_updated>
+      <last_updated>2018-06-12T01:01:05Z</last_updated>
       <check_url_length>true</check_url_length>
       <check_request_length>true</check_request_length>
       <check_query_string_length>true</check_query_string_length>
@@ -1932,7 +1940,7 @@ Connection: close</response_header>
       <check_metachars>false</check_metachars>
       <check_methods>false</check_methods>
       <in_staging>false</in_staging>
-      <last_updated>2018-06-12T00:55:51Z</last_updated>
+      <last_updated>2018-06-12T01:01:15Z</last_updated>
       <clickjacking_protection>
         <enabled>false</enabled>
         <allow_rendering_in_frames>Never</allow_rendering_in_frames>
@@ -1990,7 +1998,7 @@ Connection: close</response_header>
       <check_metachars>false</check_metachars>
       <check_methods>false</check_methods>
       <in_staging>false</in_staging>
-      <last_updated>2018-06-12T00:55:51Z</last_updated>
+      <last_updated>2018-06-12T01:01:15Z</last_updated>
       <clickjacking_protection>
         <enabled>false</enabled>
         <allow_rendering_in_frames>Never</allow_rendering_in_frames>
@@ -2303,7 +2311,7 @@ Connection: close</response_header>
       <user_config_level>advanced</user_config_level>
       <check_metachars>false</check_metachars>
       <in_staging>true</in_staging>
-      <last_updated>2018-06-12T00:55:46Z</last_updated>
+      <last_updated>2018-06-12T01:01:11Z</last_updated>
       <cors_enforcement_enable>false</cors_enforcement_enable>
       <allow_cors>false</allow_cors>
       <cors_allowed_origins_handling>unmodified</cors_allowed_origins_handling>
@@ -2330,7 +2338,7 @@ Connection: close</response_header>
       <user_config_level>advanced</user_config_level>
       <check_metachars>false</check_metachars>
       <in_staging>true</in_staging>
-      <last_updated>2018-06-12T00:55:46Z</last_updated>
+      <last_updated>2018-06-12T01:01:11Z</last_updated>
       <cors_enforcement_enable>false</cors_enforcement_enable>
       <allow_cors>false</allow_cors>
       <cors_allowed_origins_handling>unmodified</cors_allowed_origins_handling>
@@ -2365,7 +2373,7 @@ Connection: close</response_header>
       <match_regular_expression></match_regular_expression>
       <is_sensitive>false</is_sensitive>
       <in_staging>false</in_staging>
-      <last_updated>2018-06-12T00:55:41Z</last_updated>
+      <last_updated>2018-06-12T01:01:05Z</last_updated>
       <parameter_name_metachars>
         <check_metachars>false</check_metachars>
       </parameter_name_metachars>
@@ -20291,6 +20299,17 @@ Connection: close</response_header>
       <mode>disallow</mode>
     </enforcement_mode>
   </geolocation>
+  <whitelist>
+    <ip_address>12.12.12.12</ip_address>
+    <subnet_mask>255.255.255.255</subnet_mask>
+    <policy_builder_trusted>true</policy_builder_trusted>
+    <ignore_anomalies>false</ignore_anomalies>
+    <never_log>false</never_log>
+    <block_ip>Policy Default</block_ip>
+    <never_learn>false</never_learn>
+    <description></description>
+    <ignore_ip_reputation>false</ignore_ip_reputation>
+  </whitelist>
   <ip_reputation>
     <enabled>false</enabled>
     <category name="SPAM_SOURCES">
@@ -20410,7 +20429,7 @@ Connection: close</response_header>
     <identify_device>false</identify_device>
     <maximum_prevention_time>3600</maximum_prevention_time>
     <flg_enabled>false</flg_enabled>
-    <last_updated>1528764940</last_updated>
+    <last_updated>1528765265</last_updated>
     <detection_threshold_credentials_stuffing_matches_reached>100</detection_threshold_credentials_stuffing_matches_reached>
     <detection_threshold_action>alarm-and-captcha</detection_threshold_action>
     <login_attempts_from_the_same_user_threshold>3</login_attempts_from_the_same_user_threshold>
