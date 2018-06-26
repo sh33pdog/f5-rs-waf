@@ -3743,17 +3743,7 @@ Connection: close</response_header>
     <flow_access>
       <expiration_period>0</expiration_period>
       <login_url protocol="HTTPS" type="explicit" url="/user/login">
-        <username_parameter>username</username_parameter>
-        <password_parameter>password</password_parameter>
-        <auth_type>form</auth_type>
-        <response_contains/>
-        <response_doesnt_contain>Username or password are incorrect</response_doesnt_contain>
-        <expected_http_response/>
-        <header_contains/>
-        <header_omits/>
-        <cookie_contains/>
-        <parameter_contains/>
-      </login_url>
+        <username_parameter>username</username_parameter><password_parameter>password</password_parameter><auth_type>form</auth_type><response_doesnt_contain>Username or password are incorrect</response_doesnt_contain></login_url>
       <response_page>
         <response_type>default</response_type>
         <response_header>HTTP/1.1 200 OK
@@ -21153,35 +21143,7 @@ Connection: close</response_header>
     <enabled>true</enabled>
   </redirection_protection>
   <brute_force>
-    <object_id>0</object_id>
-    <maximum_login_attempts>5</maximum_login_attempts>
-    <session_expiration_in_seconds>3600</session_expiration_in_seconds>
-    <measurement_period>900</measurement_period>
-    <force_blocking>false</force_blocking>
-    <login_attempts_reached>100</login_attempts_reached>
-    <identify_device>false</identify_device>
-    <maximum_prevention_time>3600</maximum_prevention_time>
-    <flg_enabled>false</flg_enabled>
-    <last_updated>1522651466</last_updated>
-    <detection_threshold_credentials_stuffing_matches_reached>100</detection_threshold_credentials_stuffing_matches_reached>
-    <detection_threshold_action>alarm-and-captcha</detection_threshold_action>
-    <login_attempts_from_the_same_user_threshold>3</login_attempts_from_the_same_user_threshold>
-    <login_attempts_from_the_same_user_action>alarm-and-captcha</login_attempts_from_the_same_user_action>
-    <login_attempts_from_the_same_device_id_threshold>3</login_attempts_from_the_same_device_id_threshold>
-    <login_attempts_from_the_same_device_id_action>alarm-and-captcha</login_attempts_from_the_same_device_id_action>
-    <login_attempts_from_the_same_ip_action>alarm-and-captcha</login_attempts_from_the_same_ip_action>
-    <captcha_bypass_threshold>5</captcha_bypass_threshold>
-    <captcha_bypass_threshold_action>alarm-and-drop</captcha_bypass_threshold_action>
-    <client_side_integrity_bypass_threshold>3</client_side_integrity_bypass_threshold>
-    <client_side_integrity_bypass_threshold_action>alarm-and-captcha</client_side_integrity_bypass_threshold_action>
-    <source_based_protection_detection_period>3600</source_based_protection_detection_period>
-    <detect_credentials_stuffing_attack>false</detect_credentials_stuffing_attack>
-    <detect_distributed_brute_force_attack>true</detect_distributed_brute_force_attack>
-    <detect_login_attempts_from_the_same_user>true</detect_login_attempts_from_the_same_user>
-    <detect_login_attempts_from_the_same_ip>true</detect_login_attempts_from_the_same_ip>
-    <captcha_bypass>true</captcha_bypass>
-    <client_side_integrity_bypass>true</client_side_integrity_bypass>
-  </brute_force>
+    <flg_enabled>false</flg_enabled></brute_force>
   <sections>
     <section type="General Policy Settings">
       <parent_inheritance_status>none</parent_inheritance_status>

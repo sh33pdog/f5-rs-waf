@@ -1,8 +1,41 @@
 ---
-
-
 #pushes a given policy to a given bigip and creates a policy on the box.
 
+################################################################################
+#updates app specific features that we want to expose to the app owner 
+
+- name: example copying file with owner and permissions
+  copy:
+    src: "{{role_path}}/files/waf_policies/{{waf_policy_name}}.xml"
+    dest: "{{role_path}}/files/waf_policies/{{waf_policy_name}}-{{service_name}}.xml"
+
+- name: Update WAF policy with app specific paramaters for login page
+  xml:
+    path: "{{role_path}}/files/waf_policies/{{waf_policy_name}}-{{service_name}}.xml"
+    xpath: /policy/flows/flow_access/login_url
+    set_children:
+    - username_parameter: "username"
+    - password_parameter: "password"
+    - auth_type: "form"
+    - response_doesnt_contain: "{{ response_doesnt_contain }}"
+
+- name: Update WAF policy with app specific paramaters for login page
+  xml:
+    path: "{{role_path}}/files/waf_policies/{{waf_policy_name}}-{{service_name}}.xml"
+    xpath: /policy/flows/flow_access/login_url
+    attribute: url
+    value: "/user/login"
+    
+- name: controls bruteforce setting
+  xml:
+    path: "{{role_path}}/files/waf_policies/{{waf_policy_name}}-{{service_name}}.xml"
+    xpath: /policy/brute_force
+    set_children:
+    - flg_enabled: "false" 
+
+################################################################################
+
+#pushes the ASM policy to the bigip and creates an LTM policy that references it
 - name: Import and activate ASM policy
   bigip_asm_policy:
     active: yes
