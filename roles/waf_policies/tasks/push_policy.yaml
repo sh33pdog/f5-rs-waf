@@ -50,7 +50,7 @@
 
 
 #######################DOSL7 config#####################################
-    
+
 
 - name: create/update an whitelist address list 
   delegate_to: localhost
@@ -62,6 +62,18 @@
     method: POST
     status_code: 200, 201, 409
     url: "https://{{ bigip_ip_addr }}:{{ bigip_mgmt_port }}/mgmt/tm/security/shared-objects/address-list"
+    validate_certs: no
+ 
+- name: Deploying DOSL7 profile
+  delegate_to: localhost
+  uri:
+    body: "{{ lookup('template', 'dosl7_profile_payload.j2') }}"
+    body_format: json
+    headers:
+      X-F5-Auth-Token: "{{ bigip_auth_token }}"
+    method: POST
+    status_code: 200, 201, 409
+    url: "https://{{ bigip_ip_addr }}:{{ bigip_mgmt_port }}/mgmt/tm/security/dos/profile"
     validate_certs: no
 
 - name: updating DOSL7 profile
@@ -76,34 +88,21 @@
     url: "https://{{ bigip_ip_addr }}:{{ bigip_mgmt_port }}/mgmt/tm/security/dos/profile/{{dosl7_profile_name}}"
     validate_certs: no
     
-- name: creating canary DOSL7 profile (when deploying canary)
-  delegate_to: localhost
-  uri:
-    body: "{{ lookup('template', 'dosl7_profile_payload_canary.j2') }}"
-    body_format: json
-    headers:
-      X-F5-Auth-Token: "{{ bigip_auth_token }}"
-    method: POST
-    status_code: 200, 201, 409
-    url: "https://{{ bigip_ip_addr }}:{{ bigip_mgmt_port }}/mgmt/tm/security/dos/profile"
-    validate_certs: no
-  when: dosl7_profile_name_canary != "main_dosl7_policy"
-
-- name: making sure it exists creating canary DOSL7 profile (when deploying canary)
-  delegate_to: localhost
-  uri:
-    body: "{{ lookup('template', 'dosl7_profile_payload_canary.j2') }}"
-    body_format: json
-    headers:
-      X-F5-Auth-Token: "{{ bigip_auth_token }}"
-    method: POST
-    status_code: 200, 201, 409
-    url: "https://{{ bigip_ip_addr }}:{{ bigip_mgmt_port }}/mgmt/tm/security/dos/profile"
-    validate_certs: no
-  when: dosl7_profile_name_canary != "main_dosl7_policy"
  
 #######################FPS config##################################### 
 
+- name: Deploying FPS profile
+  delegate_to: localhost
+  uri:
+    body: "{{ lookup('template', 'fps_profile_payload.j2') }}"
+    body_format: json
+    headers:
+      X-F5-Auth-Token: "{{ bigip_auth_token }}"
+    method: POST
+    status_code: 200, 201, 409
+    url: "https://{{ bigip_ip_addr }}:{{ bigip_mgmt_port }}/mgmt/tm/security/anti-fraud/profile"
+    validate_certs: no
+  
 - name: updating FPS profile
   delegate_to: localhost
   uri:
